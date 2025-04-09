@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bubble of Thoughts</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom right, #d9f1ff, #ffe6f0);
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      position: relative;
+      height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      color: #ff66a3;
+      margin-top: 30px;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.6);
+      border: 2px solid #fff;
+      cursor: pointer;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-150px);
+        opacity: 0;
+      }
+    }
+
+    #messageBox {
+      position: fixed;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: none;
+    }
+
+    .main-msg-btn, .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 25px;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: fixed;
+      z-index: 1000;
+    }
+
+    .main-msg-btn {
+      background-color: #ffb6c1;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    .main-msg-btn:hover {
+      background-color: #ff69b4;
+      transform: scale(1.05);
+    }
+
+    .back-btn {
+      background-color: #a5d8ff;
+      bottom: 20px;
+      left: 20px;
+    }
+
+    .back-btn:hover {
+      background-color: #89caff;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>💭 Bubble of Thoughts</h1>
+  <div id="messageBox"></div>
+
+  <!-- Main message -->
+  <a href="birthday-message.html" class="main-msg-btn">🎁 Go to My Main Birthday Message</a>
+
+  <!-- Go back button -->
+  <a href="birthday-presents.html" class="back-btn">⬅ Go Back</a>
+
+  <script>
+    const messages = [
+      "Those people you love are the luckiest",
+      "You never fail to make me feel na I'm loved whenever we're together",
+      "Never think you are not lovable",
+      "You're strong, even when you don't feel like it.",
+      "We know you're just a baby 🥺 ",
+      "I think, you somehow keeps us all together"
+    ];
+  
+    function createBubble() {
+      const bubble = document.createElement("div");
+      bubble.classList.add("bubble");
+      bubble.style.width = bubble.style.height = Math.random() * 60 + 40 + "px";
+      bubble.style.left = Math.random() * 100 + "vw";
+      bubble.style.animationDuration = Math.random() * 4 + 4 + "s";
+  
+      bubble.onclick = () => {
+        const msg = messages[Math.floor(Math.random() * messages.length)];
+        const box = document.getElementById("messageBox");
+        box.innerText = msg;
+        box.style.display = "block";
+        setTimeout(() => box.style.display = "none", 3000);
+        bubble.remove();
+      };
+  
+      document.body.appendChild(bubble);
+      setTimeout(() => bubble.remove(), 10000);
+    }
+  
+    setInterval(createBubble, 800);
+  </script>
+</body>
+</html>
