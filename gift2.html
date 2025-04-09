@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A Sound That Reminds Me of You</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #fbece5, #ddd6f3);
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      color: #8b5e83;
+    }
+
+    .vinyl {
+      width: 200px;
+      height: 200px;
+      margin: 30px auto;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      object-fit: cover;
+      display: block;
+    }
+
+    .scroll-text {
+      width: 80%;
+      margin: 30px auto;
+      background: #fdf7f2;
+      border-radius: 15px;
+      padding: 20px;
+      height: 200px;
+      overflow-y: scroll;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      text-align: left;
+      color: #4a3f46;
+    }
+
+    audio {
+      margin-top: 10px;
+    }
+
+    .main-msg-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 25px;
+      background-color: #cbaacb;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .main-msg-btn:hover {
+      background-color: #ab8dcf;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>🎶 A Sound That Reminds Me of You</h1>
+
+  <video class="vinyl" autoplay loop muted playsinline>
+    <source src="vinyl.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  
+  <audio controls autoplay loop>
+    <source src="itsnice.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="scroll-text">
+    <p>This song reminds me of us because of how long we've been friends — it's almost a decade na and I’m happy that we’ve stayed in touch and continued to be close.</p>
+    <p>I thought about the things that happened before — why we became close — and I realized we just really value friendship. Kahit may tampuhan or keneme, we always found a way to reconcile.</p>
+    <p>Now that I think about it, you’re too nice to be my friend and I’m not even a good one, but my own way of showing it is just... spending time with you — kahit simpleng gala lang.</p>
+    <p>As time goes by, of course, things change: the way we think, talk, approach situations... but one thing stayed: the understanding we all share — and I love that.</p>
+    <p>Because of that understanding, we’re still here. Still connected. Still us.</p>
+    <p>It’s not just nice to have a friend — it’s having a sister. Not by blood, but by bond. 💖</p>
+  </div>
+
+  <a href="birthday-message.html" class="main-msg-btn">🎁 Go to My Main Birthday Message</a>
+</body>
+</html>

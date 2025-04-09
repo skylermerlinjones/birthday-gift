@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta charset="UTF-8">
+  <title>Bubble of Thoughts</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom right, #3a3d5c, #5c3a56); /* darker purple-pink gradient */
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      position: relative;
+      height: 100vh;
+      overflow-x: hidden;
+    }
+
+
+    h1 {
+      color: #ff66a3;
+      margin-top: 30px;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #777;
+      margin-top: 5px;
+      font-style: italic;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.6);
+      border: 2px solid #fff; /* keep or adjust to #ffd6f9 if too bright */
+      cursor: pointer;
+      animation: floatUp linear infinite;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-150px);
+        opacity: 0;
+      }
+    }
+
+    #messageBox {
+      position: fixed;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: none;
+    }
+
+    .main-msg-btn, .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 25px;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: fixed;
+      z-index: 1000;
+    }
+
+    .main-msg-btn {
+      background-color: #ffb6c1;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    .main-msg-btn:hover {
+      background-color: #ff69b4;
+      transform: scale(1.05);
+    }
+
+    .back-btn {
+      background-color: #a5d8ff;
+      bottom: 20px;
+      left: 20px;
+    }
+
+    .back-btn:hover {
+      background-color: #89caff;
+      transform: scale(1.05);
+    }
+
+  @media (max-width: 500px) {
+    .main-msg-btn, .back-btn {
+      font-size: 0.9rem;
+      padding: 10px 18px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+    }
+  }
+  .bubble {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px solid #fff;
+  cursor: pointer;
+  animation: floatUp linear infinite;
+  text-align: center;
+  word-wrap: break-word;
+  padding: 5px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+  </style>
+</head>
+<body>
+  <h1>💭 Bubble of Thoughts</h1>
+  <p class="subtitle">Try to pop a thought of bubbles 🫧</p> <!-- ✅ Subtitle added -->
+
+  <!-- 🎵 Background Music -->
+  <audio id="bg-music" autoplay loop hidden>
+    <source src="soft.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+
+  <!-- Main message -->
+  <a href="birthday-message.html" class="main-msg-btn">🎁 Go to My Main Birthday Message</a>
+
+  <!-- Go back button -->
+  <a href="birthday-presents.html" class="back-btn">⬅ Go Back</a>
+
+  <script>
+    const messages = [
+      "Those people you love are the luckiest",
+      "You never fail to make me feel na I'm loved whenever we're together",
+      "Never think you are not lovable",
+      "You're strong, even when you don't feel like it.",
+      "We know you're just a baby 🥺",
+      "I think, you somehow keeps us all together"
+    ];
+  
+    function createBubble() {
+      const bubble = document.createElement("div");
+      bubble.classList.add("bubble");
+  
+      // random size + position
+      const size = Math.random() * 60 + 40;
+      bubble.style.width = bubble.style.height = size + "px";
+      bubble.style.left = Math.random() * 90 + "vw";
+      bubble.style.animationDuration = Math.random() * 4 + 4 + "s";
+  
+      // on pop
+      bubble.onclick = () => {
+        const msg = messages[Math.floor(Math.random() * messages.length)];
+        bubble.innerText = msg;
+        bubble.style.display = "flex";
+        bubble.style.alignItems = "center";
+        bubble.style.justifyContent = "center";
+        bubble.style.fontSize = "0.8rem";
+        bubble.style.color = "#444";
+        bubble.style.background = "#fff";
+        bubble.style.border = "2px solid #ff66a3";
+        bubble.style.boxShadow = "0 4px 10px rgba(0,0,0,0.1)";
+        bubble.style.padding = "10px";
+        bubble.style.textAlign = "center";
+        bubble.style.animation = "none"; // stop floating
+        setTimeout(() => bubble.remove(), 3000);
+      };
+  
+      document.body.appendChild(bubble);
+      setTimeout(() => bubble.remove(), 10000);
+    }
+  
+    setInterval(createBubble, 800);
+  </script>
+
+<script>
+  window.addEventListener("click", function playOnce() {
+    const music = document.getElementById("bg-music");
+    music.play().catch(() => {
+      console.log("Autoplay blocked until interaction");
+    });
+    window.removeEventListener("click", playOnce);
+  });
+</script>
+
+  
+</body>
+</html>
